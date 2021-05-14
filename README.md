@@ -1,7 +1,7 @@
 # PET-MEDICAL-SERVICE-IN-TAIWAN
-full project source code - Pet medical service.py
+>full project source code - Pet medical service.py
 
-customized function source code-
+>customized function source code -
 
 A. data collection-
 
@@ -14,3 +14,6 @@ B. data cleaning-
 B-1 pandas:
 
 B-2 html tag name:
+
+>Folium Map - map_pet_medical_service.html
+
