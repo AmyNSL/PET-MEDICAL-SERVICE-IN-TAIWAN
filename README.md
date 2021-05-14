@@ -1,7 +1,7 @@
 # PET-MEDICAL-SERVICE-IN-TAIWAN
 >full project source code - Pet medical service.py
 
->customized function source code -
+>customized function source code - data_function.py
 
 A. data collection-
 
