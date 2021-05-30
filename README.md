@@ -5,15 +5,15 @@
 
 A. data collection-
 
-A-1 csv->pandas:
+A-1 csv->pandas
 
-A-2 web crawler/ json file / api : 
+A-2 web crawler/ json file / api  
 
 B. data cleaning-
 
-B-1 pandas:
+B-1 pandas
 
-B-2 html tag name:
+B-2 html tag name
 
 >Folium Map - map_pet_medical_service.html
 
