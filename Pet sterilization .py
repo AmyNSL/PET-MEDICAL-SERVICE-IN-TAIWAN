@@ -51,8 +51,8 @@ circle_buttonXpath=['//*[@id="aspnetForm"]/div[4]/div/section/div[2]/div/div/div
 '''建立db準備'''
 #連線指定資料庫
 conObj = sqlite3.connect('Project2021_pet.db')
-timstamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
-print('%s: [Info]Successfully connect to db'%timstamp)
+timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
+print('%s: [Info]Successfully connect to db'%timestamp)
 #建立cursor物件
 cursor = conObj.cursor()
 
@@ -91,8 +91,8 @@ while count<2:
                                  columns[8],columns[9],columns[10],columns[11])
     #print(sqlString)
     cursor.execute(sqlString)
-    timstamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print('%s: [Info]Successfully create table and columns'%timstamp)
+    timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    print('%s: [Info]Successfully create table and columns'%timestamp)
     for i in range(len(df[0].index)):
         #Insert data into db table
         cell = '''INSERT INTO petSterilization
@@ -113,8 +113,8 @@ while count<2:
     time.sleep(6)
 #主動更新所有execute
 conObj.commit()
-timstamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-print('%s: [Info]Complete all steps, ready to close db'%timstamp)
+timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+print('%s: [Info]Complete all steps, ready to close db'%timestamp)
 
 #關閉資料庫
 conObj.close()
