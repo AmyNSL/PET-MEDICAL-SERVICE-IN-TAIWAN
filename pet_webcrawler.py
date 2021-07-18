@@ -34,7 +34,7 @@ url = 'https://www.pet.gov.tw/Web/O302.aspx'
 
 print('寵物登記原始資料自動抓取執行檔')
 
-data_period=input('請問需要年度資料或是任意時間段: \n年度資料請輸入A,任意時間段請輸入B :')
+data_period=input('請問需要年度資料或是任意時間段 \n年度資料請輸入A,任意時間段請輸入B :')
 data_period = data_period.capitalize()
 dataPeriod=[]
 if data_period=='A':
@@ -47,8 +47,8 @@ elif data_period=='B':
     end_date = input('請輸入結束日(yyyy/mm/dd):')
     dataPeriod.append([start_date,end_date])
 
-timstamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
-print('目前時間: %s 準備開始執行'%timstamp)
+timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
+print('目前時間: %s 準備開始執行'%timestamp)
 
 "=================開始擷取===================="
 
@@ -61,9 +61,9 @@ time.sleep(3)
 for i in range(len(dataPeriod)):
     #輸入查詢的作業時間年月日 (yyyy/mm/dd)
     driver.find_element_by_id('txtSDATE').send_keys(dataPeriod[i][0])
-    time.sleep(2)
+    time.sleep(3)
     driver.find_element_by_id('txtEDATE').send_keys(dataPeriod[i][1])
-    time.sleep(2)
+    time.sleep(3)
     print('請稍後,資料讀取中......')
     circle_buttonXpath=['//*[@id="aspnetForm"]/div[4]/div/section/div[2]/div/div/div[2]/div[3]/div/div/label/span',
                     '//*[@id="aspnetForm"]/div[4]/div/section/div[2]/div/div/div[2]/div[4]/div/div/label/span']
@@ -72,8 +72,8 @@ for i in range(len(dataPeriod)):
     '''建立db準備'''
     #連線指定資料庫
     conObj = sqlite3.connect('pet.db')
-    timstamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
-    print('%s: [Info]Successfully connect to db'%timstamp)
+    timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
+    print('%s: [Info]Successfully connect to db'%timestamp)
     #建立cursor物件
     cursor = conObj.cursor()
     
@@ -114,8 +114,8 @@ for i in range(len(dataPeriod)):
                                          columns[4],columns[5],columns[6],columns[7],
                                          columns[8],columns[9],columns[10],columns[11],columns[12])
             cursor.execute(sqlString)
-            timstamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            print('%s: [Info]Successfully create table and columns'%timstamp)
+            timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            print('%s: [Info]Successfully create table and columns'%timestamp)
             #Insert data into db table
             for j in range(len(df[0].index)):
                 cell = '''INSERT INTO petRaw
@@ -143,8 +143,8 @@ for i in range(len(dataPeriod)):
                                          columns[4],columns[5],columns[6],columns[7],
                                          columns[8],columns[9],columns[10],columns[11])
             cursor.execute(sqlString)
-            timstamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            print('%s: [Info]Successfully create table and columns'%timstamp)
+            timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            print('%s: [Info]Successfully create table and columns'%timestamp)
             #Insert data into db table
             for j in range(len(df[0].index)):
                 cell = '''INSERT INTO petRaw1
@@ -165,10 +165,10 @@ for i in range(len(dataPeriod)):
         time.sleep(6)            
     #主動更新所有execute
     conObj.commit()
-    timstamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print('%s: [Info]Commit updated'%timstamp)
-timstamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-print('%s: [Info]Complete all steps, ready to close db'%timstamp)
+    timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    print('%s: [Info]Commit updated'%timestamp)
+timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+print('%s: [Info]Complete all steps, ready to close db'%timestamp)
 #關閉資料庫
 conObj.close()
 print('全部資料寫入成功')
